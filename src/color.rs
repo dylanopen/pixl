@@ -18,7 +18,7 @@ impl Color {
     pub const fn from_hex(hex: u32) -> Color {
         // we assume no transparency
         let r = hex / 65536;
-        let hex = hex - r*25536;
+        let hex = hex - r*65536;
         let g = hex / 256;
         let hex = hex - g*256;
         let b = hex;
@@ -30,6 +30,10 @@ impl Color {
             b: b as u8,
             a: a
         }
+    }
+
+    pub const fn to_hex(&self) -> u32 {
+        self.r as u32 * 65536 + self.g as u32 * 256 + self.b as u32
     }
 
     pub const BLACK: Color = Color::rgb(0, 0, 0);
