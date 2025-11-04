@@ -14,4 +14,6 @@ impl Color {
     pub const fn rgb(r: u8, g: u8, b: u8) -> Color {
         Color::rgba(r, g, b, 255)
     }
+
+    pub const BLACK: Color = Color::rgb(0, 0, 0);
 }
