@@ -1,9 +1,6 @@
 use crate::texture::Texture;
 
 pub struct Window {
-    width: usize,
-    height: usize,
-    title: String,
     minifb_window: minifb::Window,
 }
 
@@ -17,7 +14,6 @@ impl Window {
         minifb_window.set_target_fps(60);
 
         Window {
-            width, height, title,
             minifb_window,
         }
     }
