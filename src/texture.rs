@@ -14,6 +14,17 @@ impl Texture {
         }
     }
 
+    pub fn set_pixel(&mut self, x: usize, y: usize, color: Color) -> Result<(), String> {
+        if x >= self.width {
+            return Err("Pixl: set_pixel: x was out of bounds for texture width".to_string());
+        }
+        if y >= self.height {
+            return Err("Pixl: set_pixel: y was out of bounds for texture height".to_string());
+        }
+        self.pixels[y*self.width + x] = color;
+        Ok(())
+    }
+
     pub fn get_pixel_hex(&self, x: usize, y: usize) -> Option<u32> {
         Some(self.pixels.get(y*self.width + x)?.to_hex())
     }
