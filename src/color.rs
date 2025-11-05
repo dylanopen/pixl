@@ -28,7 +28,7 @@ impl Color {
             r: r as u8,
             g: g as u8,
             b: b as u8,
-            a: a
+            a
         }
     }
 
