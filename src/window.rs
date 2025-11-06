@@ -50,10 +50,10 @@ impl Window {
     /// ...
     /// ```
     #[must_use]
-    pub fn new(width: usize, height: usize, title: String) -> Window {
+    pub fn new(width: usize, height: usize, title: &str) -> Window {
         #[expect(clippy::expect_used, reason = "the program is unable to continue without a window")]
         let mut minifb_window = minifb::Window::new(
-            &title, width, height,
+            title, width, height,
             minifb::WindowOptions::default()
         ).expect("Pixl: failed to create window");
 
