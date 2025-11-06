@@ -101,11 +101,11 @@ pub trait NodeSize {
     /// implementing this trait, as it, by default, calls the user-defined
     /// `set_width` and `set_height` methods.
     /// # Arguments
-    /// * `width: usize` - The new width of the node.
-    /// * `height: usize` - The new height of the node.
-    fn set_size(&mut self, width: usize, height: usize) {
-        self.set_width(width);
-        self.set_height(height);
+    /// * `size` - A (usize, usize) tuple containing the width and height of the
+    ///   new size, in the form (width, height).
+    fn set_size(&mut self, size: (usize, usize)) {
+        self.set_width(size.0);
+        self.set_height(size.1);
     }
 
     /// Get the size of the node as a (usize, usize) tuple in the form
