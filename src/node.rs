@@ -1,7 +1,16 @@
+#![expect(clippy::module_name_repetitions, reason = "nodes should be explicitly defined as Node to avoid name conflicts")]
+
 use crate::{Color, Texture};
 
 
+
+/// This node provides functions for drawing a node to the screen.
+/// This should be implemented by any node that can be drawn to a texture.
 pub trait NodeDraw {
+    /// Draw the node to the surface of the passed `Texture` reference.
+    /// The node (`self`) chooses how to draw itself onto the texture. This is
+    /// generally based on the fields of the node drawn (e.g. the internal
+    /// fields, such as position, size, color, etc.)
     fn draw(&self, texture: &mut Texture);
 }
 
