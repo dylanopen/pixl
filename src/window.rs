@@ -45,9 +45,10 @@ impl Window {
     /// like libglfw3 are missing.
     /// # Example
     /// ```rust
-    /// let mut window = Window::new(800, 600, "Hello, Pixl!".to_string());
+    /// use pixl::{window::Window, texture::Texture};
+    /// let mut window = Window::new(800, 600, "Hello, Pixl!");
     /// let mut texture = Texture::new(80, 60); // doesn't have to match window size
-    /// ...
+    /// // ...
     /// ```
     #[must_use]
     pub fn new(width: usize, height: usize, title: &str) -> Window {
@@ -70,9 +71,10 @@ impl Window {
     /// (`false`).
     /// # Example
     /// ```rust
+    /// use pixl::window::Window;
     /// let mut window = Window::new(800, 600, "Hello, Pixl!".to_string());
     /// while window.is_open() {
-    ///    ...
+    ///    // ...
     /// }
     /// ```
     #[must_use]
@@ -89,6 +91,15 @@ impl Window {
     /// # Errors
     /// Returns an Err variant if the texture cannot be drawn to the window by
     /// minifb.
+    /// # Example
+    /// ```rust
+    /// use pixl::{window::Window, texture::Texture};
+    /// let mut window = Window::new(800, 600, "Hello, Pixl!");
+    /// let mut texture = Texture::new(80, 60);
+    /// while window.is_open() {
+    ///     window.draw(&texture).unwrap();
+    /// }
+    /// ```
     pub fn draw(&mut self, texture: &Texture) -> Result<(), minifb::Error> {
         self.minifb_window.update_with_buffer(&texture.to_u32_buffer(), texture.get_width(), texture.get_height())
     }
