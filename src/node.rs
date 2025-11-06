@@ -153,8 +153,21 @@ pub trait NodeStrokeColor {
     fn set_border_color(&mut self, color: Color);
 }
 
+/// This trait provides functions for getting and setting the stroke width of
+/// a node. The stroke width is the width of the border/outline of a node, or,
+/// for nodes without a fill color, this may be the thickness of the node (e.g.
+/// thickness of a line).
+/// This should be implemented by any node that has a stroke width.
 pub trait NodeStrokeWidth {
+
+    /// Get the stroke (border/outline) width of the node.
+    /// # Returns
+    /// * `usize` - The border width of the node.
     fn get_border_width(&self) -> usize;
+
+    /// Set the stroke (border/outline) width of the node.
+    /// # Arguments
+    /// * `width: usize` - The new border width of the node.
     fn set_border_width(&mut self, width: usize);
 }
 
