@@ -40,3 +40,8 @@ pub trait NodeFillColor {
     fn set_fill_color(&mut self, color: Color);
 }
 
+pub trait NodeStrokeColor {
+    fn get_border_color(&self) -> &Color;
+    fn set_border_color(&mut self, color: Color);
+}
+
