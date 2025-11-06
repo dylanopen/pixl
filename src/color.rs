@@ -101,8 +101,10 @@ impl Color {
     /// let hex = color.to_hex(); // hex will be 0xFFA500
     /// ```
     #[must_use]
+    #[expect(clippy::as_conversions, reason = "cannot fail, and required in const fn")]
+    #[expect(clippy::arithmetic_side_effects, reason = "no side effects as r,g,b <= 255")]
     pub const fn to_hex(&self) -> u32 {
-        self.r as u32 * 65536 + self.g as u32 * 256 + self.b as u32
+        self.r as u32 * 0x10000 + self.g as u32 * 0x100 + self.b as u32
     }
 
     /// A constant for the fully opaque color black (RGB: 0, 0, 0).
