@@ -2,6 +2,13 @@
 name = "pixl"
 version = "0.1.0"
 edition = "2024"
+license = "MIT"
+description = "The lightweight, powerful Rust game engine and rasterizer built from scratch"
+repository = "https://github.com/dylanopen/pixl"
+documentation = "https://docs.rs/pixl"
+categories = ["Game engines", "Graphics", "GUI", "Mathematics", "Rendering"]
+keywords = ["game", "pixel", "framebuffer", "rasterization", "rasterizer"]
 
 [dependencies]
 minifb = "0.28.0"
+
