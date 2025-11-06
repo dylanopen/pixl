@@ -81,15 +81,15 @@ impl Window {
 
     /// Draws the given `Texture` to the window.
     /// > The texture's dimensions do **not** have to match the window's. If
-    ///   they do not match, it will be upscaled or downscaled to fit the
-    ///   window.
+    /// > they do not match, it will be upscaled or downscaled to fit the
+    /// > window.
     /// # Arguments
     /// * `texture` - A reference to the `Texture` to be drawn.
-    /// # Panics
-    /// Panics if the texture cannot be drawn to the window by minifb.
-    pub fn draw(&mut self, texture: &Texture) {
+    /// # Errors
+    /// Returns an Err variant if the texture cannot be drawn to the window by
+    /// minifb.
+    pub fn draw(&mut self, texture: &Texture) -> Result<(), minifb::Error> {
         self.minifb_window.update_with_buffer(&texture.to_u32_buffer(), texture.get_width(), texture.get_height())
-            .expect("Pixl: failed to draw texture to window");
     }
 }
 
