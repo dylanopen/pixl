@@ -1,7 +1,18 @@
+//! The fundamental object in Pixl is the 'node'. A node is any object in the
+//! program, usually one which can be drawn to a texture, and are made up of
+//! properties such as position, size, color, etc. Nodes can be simple shapes
+//! like rectangles and circles, or more complex objects like images and text.
+//! This module defines traits that provide a common interface for all nodes in
+//! Pixl. By implementing these traits, different types of nodes can be treated
+//! generically, so code can be made much more reusable and modular.
+//! Any nodes you create should implement the relevant traits defined in this
+//! module, or implement other traits if you need more specific functionality
+//! than is provided here.
+
+
 #![expect(clippy::module_name_repetitions, reason = "nodes should be explicitly defined as Node to avoid name conflicts")]
 
 use crate::{Color, Texture};
-
 
 
 /// This node provides functions for drawing a node to the screen.
