@@ -121,8 +121,19 @@ pub trait NodeSize {
     }
 }
 
+/// This trait provides functions for getting and setting the fill color of a
+/// node.
+/// This should be implemented by any node that has a fill color.
 pub trait NodeFillColor {
+
+    /// Get the fill color of the node.
+    /// # Returns
+    /// * `&Color` - A reference to the fill color of the node.
     fn get_fill_color(&self) -> &Color;
+
+    /// Set the fill color of the node.
+    /// # Arguments
+    /// * `color: Color` - The new fill color of the node.
     fn set_fill_color(&mut self, color: Color);
 }
 
