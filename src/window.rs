@@ -75,6 +75,7 @@ impl Window {
     ///    ...
     /// }
     /// ```
+    #[must_use]
     pub fn is_open(&self) -> bool {
         self.minifb_window.is_open()
     }
