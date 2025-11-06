@@ -161,7 +161,7 @@ pub trait NodeStrokeColor {
     /// Set the stroke (border/outline) color of the node.
     /// # Arguments
     /// * `color: Color` - The new border color of the node.
-    fn set_border_color(&mut self, color: Color);
+    fn set_stroke_color(&mut self, color: Color);
 }
 
 /// This trait provides functions for getting and setting the stroke width of
