@@ -1,8 +1,8 @@
 //! Pixl is a lightweight, powerful Rust game engine and rasterizer built from
 //! scratch with nothing but a window and a framebuffer :)
-//! GitHub: https://github.com/dylanopen/pixl
-//! Crates.io: https://crates.io/crates/pixl
-//! Documentation: https://docs.rs/pixl
+//! GitHub: <https://github.com/dylanopen/pixl>
+//! Crates.io: <https://crates.io/crates/pixl>
+//! Documentation: <https://docs.rs/pixl>
 
 #![forbid(
     missing_docs,
