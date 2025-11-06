@@ -815,6 +815,8 @@
 #![allow(
     clippy::min_ident_chars,
     clippy::use_self,
+    clippy::arbitrary_source_item_ordering,
+    reason = "these lints do not fit with the Pixl project"
 )]
 
 
