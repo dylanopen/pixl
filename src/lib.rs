@@ -361,7 +361,7 @@
     clippy::path_ends_with_ext,
     clippy::permissions_set_readonly_false,
     clippy::pointers_in_nomem_asm_block,
-    clippy::possible_missing_else,
+    //clippy::possible_missing_else,
     clippy::precedence,
     clippy::print_in_format_impl,
     clippy::print_literal,
