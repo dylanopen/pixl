@@ -588,7 +588,6 @@
     clippy::impl_trait_in_params,
     clippy::implicit_clone,
     clippy::implicit_hasher,
-    clippy::implicit_return,
     clippy::imprecise_flops,
     clippy::inconsistent_struct_constructor,
     clippy::index_refutable_slice,
@@ -815,6 +814,7 @@
     clippy::inline_asm_x86_intel_syntax,
     clippy::question_mark_used,
     clippy::missing_inline_in_public_items,
+    clippy::implicit_return,
     reason = "these lints do not fit with the Pixl project"
 )]
 
