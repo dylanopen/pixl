@@ -52,7 +52,7 @@ impl Texture {
     ///     .expect("coordinates were out of bounds");
     /// ```
     pub fn get_pixel(&self, x: usize, y: usize) -> Option<Color> {
-        Some(*self.pixels.get(y*self.width + x)?)
+        Some(*self.pixels.get(y.checked_mul(self.width)?.checked_add(x)?)?)
     }
 
     /// Sets the color of the pixel at the specified (x, y) coordinates.
