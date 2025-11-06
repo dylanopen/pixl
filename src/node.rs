@@ -45,3 +45,8 @@ pub trait NodeStrokeColor {
     fn set_border_color(&mut self, color: Color);
 }
 
+pub trait NodeStrokeWidth {
+    fn get_border_width(&self) -> usize;
+    fn set_border_width(&mut self, width: usize);
+}
+
