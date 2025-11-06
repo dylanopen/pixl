@@ -697,7 +697,6 @@
     clippy::pub_use,
     clippy::pub_with_shorthand,
     clippy::pub_without_shorthand,
-    clippy::question_mark_used,
     clippy::range_minus_one,
     clippy::range_plus_one,
     clippy::rc_buffer,
@@ -815,6 +814,7 @@
     clippy::arbitrary_source_item_ordering,
     clippy::too_long_first_doc_paragraph,
     clippy::inline_asm_x86_intel_syntax,
+    clippy::question_mark_used,
     reason = "these lints do not fit with the Pixl project"
 )]
 
