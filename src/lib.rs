@@ -4,6 +4,9 @@
 //! Crates.io: <https://crates.io/crates/pixl>
 //! Documentation: <https://docs.rs/pixl>
 
+// imports in doctests are really annoying, and some tests hang.
+#![cfg(not(doctest))]
+
 #![forbid(
     missing_docs,
     clippy::doc_markdown,
