@@ -1,4 +1,19 @@
+//! Pixl is a lightweight, powerful Rust game engine and rasterizer built from
+//! scratch with nothing but a window and a framebuffer :)
+//! GitHub: https://github.com/dylanopen/pixl
+//! Crates.io: https://crates.io/crates/pixl
+//! Documentation: https://docs.rs/pixl
 
+#![forbid(
+    missing_docs,
+    clippy::doc_markdown,
+    clippy::missing_docs_in_private_items,
+    clippy::missing_panics_doc,
+    clippy::empty_docs,
+    clippy::doc_not_on_item,
+    rustdoc::all,
+    rustdoc::missing_doc_code_examples,
+)]
 
 // These are lints which are denied by default by clippy, but are shown here to
 // be explicit.
@@ -145,7 +160,6 @@
     clippy::duplicate_underscore_argument,
     clippy::duplicated_attributes,
     clippy::duration_subsec,
-    clippy::empty_docs,
     clippy::empty_line_after_doc_comments,
     clippy::empty_line_after_outer_attr,
     clippy::empty_loop,
@@ -535,7 +549,6 @@
     clippy::doc_include_without_cfg,
     clippy::doc_link_code,
     clippy::doc_link_with_quotes,
-    clippy::doc_markdown,
     clippy::elidable_lifetime_names,
     clippy::else_if_without_else,
     clippy::empty_drop,
@@ -635,11 +648,9 @@
     clippy::missing_assert_message,
     clippy::missing_asserts_for_indexing,
     clippy::missing_const_for_fn,
-    clippy::missing_docs_in_private_items,
     clippy::missing_errors_doc,
     clippy::missing_fields_in_debug,
     clippy::missing_inline_in_public_items,
-    clippy::missing_panics_doc,
     clippy::missing_trait_methods,
     clippy::mixed_read_write_in_expression,
     clippy::mod_module_files,
