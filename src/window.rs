@@ -38,6 +38,11 @@ impl Window {
     /// * `title` - The title of the window as a `String`.
     /// # Returns
     /// A `Window` instance with the specified dimensions and title.
+    /// # Panics
+    /// Panics if the window cannot be created by minifb (e.g., due to invalid
+    /// dimensions or system limitations).
+    /// This may also panic if the system is out of memory, or system packages
+    /// like libglfw3 are missing.
     /// # Example
     /// ```rust
     /// let mut window = Window::new(800, 600, "Hello, Pixl!".to_string());
