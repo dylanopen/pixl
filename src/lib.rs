@@ -800,7 +800,6 @@
     clippy::unwrap_in_result,
     clippy::unwrap_used,
     clippy::use_debug,
-    clippy::use_self,
     clippy::used_underscore_binding,
     clippy::used_underscore_items,
     clippy::useless_let_if_seq,
@@ -814,7 +813,8 @@
 )]
 
 #![allow(
-    clippy::min_ident_chars
+    clippy::min_ident_chars,
+    clippy::use_self,
 )]
 
 
