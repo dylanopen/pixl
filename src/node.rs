@@ -35,3 +35,8 @@ pub trait NodeSize {
     }
 }
 
+pub trait NodeFillColor {
+    fn get_fill_color(&self) -> &Color;
+    fn set_fill_color(&mut self, color: Color);
+}
+
