@@ -827,9 +827,11 @@
 pub mod window;
 pub mod texture;
 pub mod color;
+pub mod node;
 
 
 pub use window::Window;
 pub use texture::Texture;
 pub use color::Color;
+pub use node::Node;
 
