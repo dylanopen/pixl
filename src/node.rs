@@ -179,6 +179,6 @@ pub trait NodeStrokeWidth {
     /// Set the stroke (border/outline) width of the node.
     /// # Arguments
     /// * `width: usize` - The new border width of the node.
-    fn set_border_width(&mut self, width: usize);
+    fn set_stroke_width(&mut self, width: usize);
 }
 
