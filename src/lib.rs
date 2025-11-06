@@ -693,7 +693,6 @@
     clippy::ptr_as_ptr,
     clippy::ptr_cast_constness,
     clippy::pub_underscore_fields,
-    clippy::pub_use,
     clippy::pub_with_shorthand,
     clippy::pub_without_shorthand,
     clippy::range_minus_one,
@@ -820,6 +819,7 @@
     clippy::integer_division_remainder_used,
     clippy::integer_division,
     clippy::multiple_crate_versions,
+    clippy::pub_use,
     reason = "these lints do not fit with the Pixl project"
 )]
 
@@ -827,3 +827,9 @@
 pub mod window;
 pub mod texture;
 pub mod color;
+
+
+pub use window::Window;
+pub use texture::Texture;
+pub use color::Color;
+
