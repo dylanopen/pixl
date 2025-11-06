@@ -156,7 +156,7 @@ pub trait NodeStrokeColor {
     /// Get the stroke (border/outline) color of the node.
     /// # Returns
     /// * `&Color` - A reference to the border color of the node.
-    fn get_border_color(&self) -> &Color;
+    fn get_stroke_color(&self) -> &Color;
 
     /// Set the stroke (border/outline) color of the node.
     /// # Arguments
