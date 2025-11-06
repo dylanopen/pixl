@@ -137,8 +137,19 @@ pub trait NodeFillColor {
     fn set_fill_color(&mut self, color: Color);
 }
 
+/// This trait provides functions for getting and setting the stroke color of
+/// a node.
+/// This should be implemented by any node that has a stroke color.
 pub trait NodeStrokeColor {
+
+    /// Get the stroke (border/outline) color of the node.
+    /// # Returns
+    /// * `&Color` - A reference to the border color of the node.
     fn get_border_color(&self) -> &Color;
+
+    /// Set the stroke (border/outline) color of the node.
+    /// # Arguments
+    /// * `color: Color` - The new border color of the node.
     fn set_border_color(&mut self, color: Color);
 }
 
