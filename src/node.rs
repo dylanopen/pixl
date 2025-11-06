@@ -174,7 +174,7 @@ pub trait NodeStrokeWidth {
     /// Get the stroke (border/outline) width of the node.
     /// # Returns
     /// * `usize` - The border width of the node.
-    fn get_border_width(&self) -> usize;
+    fn get_stroke_width(&self) -> usize;
 
     /// Set the stroke (border/outline) width of the node.
     /// # Arguments
