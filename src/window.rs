@@ -49,7 +49,9 @@ impl Window {
     /// let mut texture = Texture::new(80, 60); // doesn't have to match window size
     /// ...
     /// ```
+    #[must_use]
     pub fn new(width: usize, height: usize, title: String) -> Window {
+        #[expect(clippy::expect_used, reason = "the program is unable to continue without a window")]
         let mut minifb_window = minifb::Window::new(
             &title, width, height,
             minifb::WindowOptions::default()
