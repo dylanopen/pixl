@@ -13,7 +13,6 @@
     clippy::missing_docs_in_private_items,
     clippy::missing_panics_doc,
     clippy::empty_docs,
-    clippy::doc_not_on_item,
     rustdoc::all,
     rustdoc::missing_doc_code_examples,
 )]
@@ -654,7 +653,6 @@
     clippy::mod_module_files,
     clippy::module_name_repetitions,
     clippy::modulo_arithmetic,
-    clippy::multiple_crate_versions,
     clippy::multiple_inherent_impl,
     clippy::multiple_unsafe_ops_per_block,
     clippy::must_use_candidate,
@@ -821,6 +819,7 @@
     clippy::unseparated_literal_suffix,
     clippy::integer_division_remainder_used,
     clippy::integer_division,
+    clippy::multiple_crate_versions,
     reason = "these lints do not fit with the Pixl project"
 )]
 
