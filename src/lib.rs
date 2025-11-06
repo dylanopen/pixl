@@ -597,7 +597,6 @@
     clippy::infinite_loop,
     clippy::inline_always,
     clippy::inline_asm_x86_att_syntax,
-    clippy::inline_asm_x86_intel_syntax,
     clippy::integer_division,
     clippy::integer_division_remainder_used,
     clippy::into_iter_without_iter,
@@ -815,6 +814,7 @@
     clippy::use_self,
     clippy::arbitrary_source_item_ordering,
     clippy::too_long_first_doc_paragraph,
+    clippy::inline_asm_x86_intel_syntax,
     reason = "these lints do not fit with the Pixl project"
 )]
 
