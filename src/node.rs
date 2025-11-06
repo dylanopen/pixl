@@ -71,16 +71,51 @@ pub trait NodePosition {
     }
 }
 
+/// This trait provides functions for getting and setting the size of a node.
+/// This should be implemented by any node that has a size that can be defined
+/// by a rectangle dimensions (width and height).
 pub trait NodeSize {
+
+    /// Get the width of the node.
+    /// # Returns
+    /// * `usize` - The width of the node.
     fn get_width(&self) -> usize;
+
+    /// Get the height of the node.
+    /// # Returns
+    /// * `usize` - The height of the node.
     fn get_height(&self) -> usize;
+
+    /// Set the width of the node.
+    /// # Arguments
+    /// * `width: usize` - The new width of the node.
     fn set_width(&mut self, width: usize);
+
+    /// Set the height of the node.
+    /// # Arguments
+    /// * `height: usize` - The new height of the node.
     fn set_height(&mut self, height: usize);
 
+    /// Set the size of the node.
+    /// This method does not need to be implemented manually by a struct
+    /// implementing this trait, as it, by default, calls the user-defined
+    /// `set_width` and `set_height` methods.
+    /// # Arguments
+    /// * `width: usize` - The new width of the node.
+    /// * `height: usize` - The new height of the node.
     fn set_size(&mut self, width: usize, height: usize) {
         self.set_width(width);
         self.set_height(height);
     }
+
+    /// Get the size of the node as a (usize, usize) tuple in the form
+    /// (width, height).
+    /// This method does not need to be implemented manually by a struct
+    /// implementing this trait, as it, by default, calls the user-defined
+    /// `get_width` and `get_height` methods.
+    /// # Returns
+    /// * `(usize, usize)` - A tuple containing the width and height of the
+    ///   node, in the form (width, height).
     fn get_size(&self) -> (usize, usize) {
         (self.get_width(), self.get_height())
     }
