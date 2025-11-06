@@ -647,7 +647,6 @@
     clippy::missing_const_for_fn,
     clippy::missing_errors_doc,
     clippy::missing_fields_in_debug,
-    clippy::missing_inline_in_public_items,
     clippy::missing_trait_methods,
     clippy::mixed_read_write_in_expression,
     clippy::mod_module_files,
@@ -815,6 +814,7 @@
     clippy::too_long_first_doc_paragraph,
     clippy::inline_asm_x86_intel_syntax,
     clippy::question_mark_used,
+    clippy::missing_inline_in_public_items,
     reason = "these lints do not fit with the Pixl project"
 )]
 
