@@ -34,6 +34,7 @@ impl Color {
     /// ```rust
     /// let semi_transparent_red = Color::rgba(255, 0, 0, 128);
     /// ```
+    #[must_use]
     pub const fn rgba(r: u8, g: u8, b: u8, a: u8) -> Color {
         Color { r, g, b, a }
     }
@@ -51,6 +52,7 @@ impl Color {
     /// ```rust
     /// let opaque_blue = Color::rgb(0, 63, 255);
     /// ```
+    #[must_use]
     pub const fn rgb(r: u8, g: u8, b: u8) -> Color {
         Color::rgba(r, g, b, 255)
     }
@@ -67,6 +69,7 @@ impl Color {
     /// ```rust
     /// let color = Color::from_hex(0xFF00FF); // magenta
     /// ```
+    #[must_use]
     pub const fn from_hex(hex: u32) -> Color {
         // we assume no transparency
         let r = hex / 65536;
@@ -97,6 +100,7 @@ impl Color {
     /// let color = Color::rgb(255, 165, 0); // orange
     /// let hex = color.to_hex(); // hex will be 0xFFA500
     /// ```
+    #[must_use]
     pub const fn to_hex(&self) -> u32 {
         self.r as u32 * 65536 + self.g as u32 * 256 + self.b as u32
     }
