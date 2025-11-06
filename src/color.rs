@@ -2,10 +2,12 @@
 
 /// The `Color` struct represents a color with red, green, blue, and alpha
 /// components.
+///
 /// Each component is an 8-bit unsigned integer (0-255).
 /// This is used by the Texture struct to define the color of each pixel.
 /// Currently, only the RGBA format is properly supported.
 #[derive(Copy, Clone, Debug)]
+#[non_exhaustive]
 pub struct Color {
     /// The red component of the color, ranging from 0 to 255.
     pub r: u8,
