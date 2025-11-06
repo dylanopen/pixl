@@ -22,8 +22,10 @@ use crate::texture::Texture;
 ///     }
 /// }
 /// ```
-
 pub struct Window {
+    /// The underlying minifb window instance.
+    /// This field is private, as it does not need to be used outside of the 
+    /// wrapper methods in this `Window` struct..
     minifb_window: minifb::Window,
 }
 
