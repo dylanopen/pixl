@@ -819,6 +819,7 @@
     clippy::missing_inline_in_public_items,
     clippy::implicit_return,
     clippy::unseparated_literal_suffix,
+    clippy::integer_division_remainder_used,
     reason = "these lints do not fit with the Pixl project"
 )]
 
