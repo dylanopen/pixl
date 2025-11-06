@@ -643,7 +643,6 @@
     clippy::match_wildcard_for_single_variants,
     clippy::maybe_infinite_iter,
     clippy::mem_forget,
-    clippy::min_ident_chars,
     clippy::mismatching_type_param_order,
     clippy::missing_assert_message,
     clippy::missing_asserts_for_indexing,
@@ -812,6 +811,10 @@
     clippy::wildcard_enum_match_arm,
     clippy::wildcard_imports,
     clippy::zero_sized_map_values,
+)]
+
+#![allow(
+    clippy::min_ident_chars
 )]
 
 
