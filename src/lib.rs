@@ -504,7 +504,6 @@
     clippy::alloc_instead_of_core,
     clippy::allow_attributes,
     clippy::allow_attributes_without_reason,
-    clippy::arbitrary_source_item_ordering,
     clippy::arithmetic_side_effects,
     clippy::as_conversions,
     clippy::as_pointer_underscore,
@@ -758,7 +757,6 @@
     clippy::suspicious_xor_used_as_pow,
     clippy::tests_outside_test_module,
     clippy::todo,
-    clippy::too_long_first_doc_paragraph,
     clippy::too_many_lines,
     clippy::trailing_empty_array,
     clippy::trait_duplication_in_bounds,
@@ -816,6 +814,7 @@
     clippy::min_ident_chars,
     clippy::use_self,
     clippy::arbitrary_source_item_ordering,
+    clippy::too_long_first_doc_paragraph,
     reason = "these lints do not fit with the Pixl project"
 )]
 
