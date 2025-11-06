@@ -70,20 +70,16 @@ impl Color {
     /// let color = Color::from_hex(0xFF00FF); // magenta
     /// ```
     #[must_use]
+    #[expect(clippy::as_conversions, clippy::cast_possible_truncation, reason = "cannot fail, and required in const fn")]
     pub const fn from_hex(hex: u32) -> Color {
         // we assume no transparency
-        let r = hex / 65536;
-        let hex = hex - r*65536;
-        let g = hex / 256;
-        let hex = hex - g*256;
-        let b = hex;
+        let r = (hex / 0x10000) as u8;
+        let g = (hex % 0x10000 / 0x100) as u8;
+        let b = (hex % 0x100) as u8;
         let a = 255;
 
         Color {
-            r: r as u8,
-            g: g as u8,
-            b: b as u8,
-            a
+            r, g, b, a
         }
     }
 
