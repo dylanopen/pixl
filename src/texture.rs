@@ -11,8 +11,11 @@ use crate::color::Color;
 /// the texture to a buffer of hexadecimal color values for usage in libraries
 /// such as minifb.
 pub struct Texture {
+    /// A flat Vec of colors, representing the pixels in the texture.
     pixels: Vec<Color>,
+    /// The width of the texture in pixels.
     width: usize,
+    /// The height of the texture in pixels.
     height: usize,
 }
 
