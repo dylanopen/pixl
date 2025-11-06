@@ -10,16 +10,14 @@ use crate::texture::Texture;
 /// # Example
 /// ```rust
 /// use pixl::{window::Window, texture::Texture, color::Color};
-/// fn main() {
-///     let mut window = Window::new(800, 600, "Hello, Pixl!".to_string());
-///     let mut texture = Texture::new(80, 60); // doesn't have to match window size
-///     // Set some pixels in the texture:
-///     texture.set_pixel(10, 10, Color::rgb(255, 0, 0)).unwrap(); // red pixel
-///     texture.set_pixel(20, 20, Color::rgb(0, 255, 0)).unwrap(); // green pixel
-///     texture.set_pixel(30, 30, Color::rgb(0, 0, 255)).unwrap(); // blue pixel
-///     while window.is_open() {
-///         window.draw(&texture);
-///     }
+/// let mut window = Window::new(800, 600, "Hello, Pixl!".to_string());
+/// let mut texture = Texture::new(80, 60); // doesn't have to match window size
+/// // Set some pixels in the texture:
+/// texture.set_pixel(10, 10, Color::rgb(255, 0, 0)).unwrap(); // red pixel
+/// texture.set_pixel(20, 20, Color::rgb(0, 255, 0)).unwrap(); // green pixel
+/// texture.set_pixel(30, 30, Color::rgb(0, 0, 255)).unwrap(); // blue pixel
+/// while window.is_open() {
+///     window.draw(&texture);
 /// }
 /// ```
 pub struct Window {
