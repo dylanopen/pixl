@@ -829,3 +829,7 @@ pub mod texture;
 pub mod color;
 
 
+pub use window::Window;
+pub use texture::Texture;
+pub use color::Color;
+
