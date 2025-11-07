@@ -1,7 +1,10 @@
-//! The fundamental object in Pixl is the 'node'. A node is any object in the
-//! program, usually one which can be drawn to a texture, and are made up of
-//! properties such as position, size, color, etc. Nodes can be simple shapes
-//! like rectangles and circles, or more complex objects like images and text.
+//! Traits to define functionality of Pixel's objects (nodes). Functionality is
+//! added using components.
+//!
+//! Each node in Pixl is defined by its *components*. A component allows
+//! functions to handle logic of your node independently of the inner workings
+//! of the node. For example, a function `move_left` could take any node which
+//! implemented the `PositionComponent` trait.
 //! This module defines traits that provide a common interface for all nodes in
 //! Pixl. By implementing these traits, different types of nodes can be treated
 //! generically, so code can be made much more reusable and modular.
@@ -10,14 +13,14 @@
 //! than is provided here.
 
 
-#![expect(clippy::module_name_repetitions, reason = "nodes should be explicitly defined as Node to avoid name conflicts")]
+#![expect(clippy::module_name_repetitions, reason = "components should be explicitly defined as Components to avoid name conflicts")]
 
 use crate::{Color, Texture};
 
 
 /// This node provides functions for drawing a node to the screen.
 /// This should be implemented by any node that can be drawn to a texture.
-pub trait NodeDraw {
+pub trait DrawComponent {
     
     /// Draw the node to the surface of the passed `Texture` reference.
     /// The node (`self`) chooses how to draw itself onto the texture. This is
@@ -29,7 +32,7 @@ pub trait NodeDraw {
 /// This trait provides functions for getting and setting the position of a node.
 /// This should be implemented by any node that has a set position.
 /// The position is the top-left corner of the node.
-pub trait NodePosition {
+pub trait PositionComponent {
 
     /// Get the X position of the node.
     /// This function should return the X coordinate of the top-left corner of
@@ -85,7 +88,7 @@ pub trait NodePosition {
 /// This trait provides functions for getting and setting the size of a node.
 /// This should be implemented by any node that has a size that can be defined
 /// by a rectangle dimensions (width and height).
-pub trait NodeSize {
+pub trait SizeComponent {
 
     /// Get the width of the node.
     /// # Returns
@@ -135,7 +138,7 @@ pub trait NodeSize {
 /// This trait provides functions for getting and setting the fill color of a
 /// node.
 /// This should be implemented by any node that has a fill color.
-pub trait NodeFillColor {
+pub trait FillColorComponent {
 
     /// Get the fill color of the node.
     /// # Returns
@@ -151,7 +154,7 @@ pub trait NodeFillColor {
 /// This trait provides functions for getting and setting the stroke color of
 /// a node.
 /// This should be implemented by any node that has a stroke color.
-pub trait NodeStrokeColor {
+pub trait StrokeColorComponent {
 
     /// Get the stroke (border/outline) color of the node.
     /// # Returns
@@ -169,7 +172,7 @@ pub trait NodeStrokeColor {
 /// for nodes without a fill color, this may be the thickness of the node (e.g.
 /// thickness of a line).
 /// This should be implemented by any node that has a stroke width.
-pub trait NodeStrokeWidth {
+pub trait StrokeWidthComponent {
 
     /// Get the stroke (border/outline) width of the node.
     /// # Returns
