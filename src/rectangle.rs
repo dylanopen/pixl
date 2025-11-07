@@ -34,6 +34,25 @@ pub struct RectangleNode {
     pub fill_color: Color,
 }
 
+impl RectangleNode {
+    /// Create a new `RectangleNode` with the specified position, size, and fill
+    /// color.
+    /// # Parameters
+    /// - `x`: The x-coordinate of the top-left corner of the rectangle.
+    /// - `y`: The y-coordinate of the top-left corner of the rectangle.
+    /// - `width`: The width of the rectangle, in pixels.
+    /// - `height`: The height of the rectangle in pixels.
+    /// - `fill_color`: The fill color of the rectangle.
+    /// # Returns
+    /// A new `RectangleNode` instance with the specified properties.
+    #[must_use]
+    pub const fn new(
+        x: usize, y: usize, width: usize, height: usize, fill_color: Color
+    ) -> RectangleNode {
+        RectangleNode { x, y, width, height, fill_color }
+    }
+}
+
 impl PositionComponent for RectangleNode {
     fn get_x(&self) -> usize {
         self.x
