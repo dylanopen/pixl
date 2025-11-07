@@ -138,7 +138,7 @@ pub trait SizeComponent {
 /// This trait provides functions for getting and setting the fill color of a
 /// node.
 /// This should be implemented by any node that has a fill color.
-pub trait NodeFillColor {
+pub trait FillColorComponent {
 
     /// Get the fill color of the node.
     /// # Returns
