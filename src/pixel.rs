@@ -6,6 +6,10 @@ use crate::component::{DrawComponent, FillColorComponent, PositionComponent};
 
 
 /// A node representing a single pixel in a texture.
+/// Implemented components:
+/// - `DrawComponent`
+/// - `PositionComponent`
+/// - `FillColorComponent`
 #[expect(clippy::module_name_repetitions, reason = "struct should be called 'PixelNode' as it is standard.")]
 #[non_exhaustive]
 pub struct PixelNode {
