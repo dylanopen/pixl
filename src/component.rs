@@ -20,7 +20,7 @@ use crate::{Color, Texture};
 
 /// This node provides functions for drawing a node to the screen.
 /// This should be implemented by any node that can be drawn to a texture.
-pub trait NodeDraw {
+pub trait DrawComponent {
     
     /// Draw the node to the surface of the passed `Texture` reference.
     /// The node (`self`) chooses how to draw itself onto the texture. This is
