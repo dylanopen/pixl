@@ -10,5 +10,6 @@ categories = ["Game engines", "Graphics", "GUI", "Mathematics", "Rendering"]
 keywords = ["game", "pixel", "framebuffer", "rasterization", "rasterizer"]
 
 [dependencies]
+anyhow = "1.0.100"
 minifb = { version = "0.28.0", default-features = false, features = ["x11"] }
 

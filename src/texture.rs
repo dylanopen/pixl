@@ -4,6 +4,8 @@
 //! This struct is the basis for all of Pixl - everything is drawn to a Texture,
 //! and a window simply displays a Texture.
 
+use anyhow::Error;
+
 use crate::color::Color;
 
 /// A 2D texture represented as a grid of pixels, where each pixel is defined by
@@ -78,15 +80,15 @@ impl Texture {
     ///     .expect("coordinates were out of bounds");
     /// ```
     #[expect(clippy::indexing_slicing, reason = "bounds are already checked manually")]
-    pub fn set_pixel(&mut self, x: usize, y: usize, color: Color) -> Result<(), String> {
+    pub fn set_pixel(&mut self, x: usize, y: usize, color: Color) -> Result<(), Error> {
         if x >= self.width {
-            return Err("Pixl: set_pixel: x was out of bounds for texture width".to_owned());
+            return Err(Error::msg("Pixl: set_pixel: x was out of bounds for texture width"));
         }
         if y >= self.height {
-            return Err("Pixl: set_pixel: y was out of bounds for texture height".to_owned());
+            return Err(Error::msg("Pixl: set_pixel: y was out of bounds for texture height"));
         }
-        self.pixels[y.checked_mul(self.width).ok_or("Pixl: set_pixel: arithmetic error")?
-            .checked_add(x).ok_or("Pixl: set_pixel: arithmetic error")?]
+        self.pixels[y.checked_mul(self.width).ok_or_else(|| Error::msg("Pixl: set_pixel: arithmetic error"))?
+            .checked_add(x).ok_or_else(||Error::msg("Pixl: set_pixel: arithmetic error"))?]
             = color;
         Ok(())
     }
@@ -126,7 +128,7 @@ impl Texture {
     /// texture.set_pixel_hex(10, 10, 0xFF0000)
     ///    .expect("coordinates were out of bounds");
     /// ```
-    pub fn set_pixel_hex(&mut self, x: usize, y: usize, color: u32) -> Result<(), String> {
+    pub fn set_pixel_hex(&mut self, x: usize, y: usize, color: u32) -> Result<(), Error> {
         self.set_pixel(x, y, Color::from_hex(color))
     }
 

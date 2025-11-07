@@ -830,6 +830,7 @@ pub mod color;
 pub mod component;
 pub mod pixel;
 pub mod rectangle;
+pub mod line;
 
 
 pub use window::Window;
