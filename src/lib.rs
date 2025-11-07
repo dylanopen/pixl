@@ -829,6 +829,7 @@ pub mod texture;
 pub mod color;
 pub mod component;
 pub mod pixel;
+pub mod rectangle;
 
 
 pub use window::Window;
