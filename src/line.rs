@@ -45,3 +45,34 @@ impl LineNode {
     }
 }
 
+impl DrawComponent for LineNode {
+    fn draw(&self, texture: &mut crate::Texture) {
+        // Bresenham's line algorithm
+        let dx = (self.x2 as isize - self.x1 as isize).abs();
+        let dy = -(self.y2 as isize - self.y1 as isize).abs();
+        let sx = if self.x1 < self.x2 { 1 } else { -1 };
+        let sy = if self.y1 < self.y2 { 1 } else { -1 };
+        let mut err = dx + dy;
+        let mut x = self.x1 as isize;
+        let mut y = self.y1 as isize;
+
+        loop {
+            if x >= 0 && y >= 0 {
+                texture.set_pixel(x as usize, y as usize, self.color).unwrap_or(());
+            }
+            if x == self.x2 as isize && y == self.y2 as isize {
+                break;
+            }
+            let e2 = 2 * err;
+            if e2 >= dy {
+                err += dy;
+                x += sx;
+            }
+            if e2 <= dx {
+                err += dx;
+                y += sy;
+            }
+        }
+    }
+}
+
