@@ -32,7 +32,7 @@ pub trait DrawComponent {
 /// This trait provides functions for getting and setting the position of a node.
 /// This should be implemented by any node that has a set position.
 /// The position is the top-left corner of the node.
-pub trait NodePosition {
+pub trait PositionComponent {
 
     /// Get the X position of the node.
     /// This function should return the X coordinate of the top-left corner of
