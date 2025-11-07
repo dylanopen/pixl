@@ -2,6 +2,7 @@
 
 
 use crate::Color;
+use crate::component::DrawComponent;
 
 
 /// A node representing a single pixel in a texture.
@@ -24,4 +25,15 @@ impl PixelNode {
         PixelNode { x, y, color }
     }
 }
+
+impl DrawComponent for PixelNode {
+    fn draw(&self, texture: &mut crate::Texture) {
+        texture.set_pixel(self.x, self.y, self.color).unwrap_or(());
+        // TODO: error handling
+        // TODO: consider the alpha channel of `self.color` and blend between
+        // the existing color at (x,y) and the new color, depending on the alpha
+        // channel.
+    }
+}
+
 
