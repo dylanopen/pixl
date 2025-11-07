@@ -827,7 +827,7 @@
 pub mod window;
 pub mod texture;
 pub mod color;
-pub mod node;
+pub mod component;
 
 
 pub use window::Window;
