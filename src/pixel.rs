@@ -2,7 +2,7 @@
 
 
 use crate::Color;
-use crate::component::DrawComponent;
+use crate::component::{DrawComponent, FillColorComponent, PositionComponent};
 
 
 /// A node representing a single pixel in a texture.
@@ -36,4 +36,20 @@ impl DrawComponent for PixelNode {
     }
 }
 
+impl PositionComponent for PixelNode {
+    fn get_x(&self) -> usize {
+        self.x
+    }
 
+    fn set_x(&mut self, x: usize) {
+        self.x = x;
+    }
+
+    fn get_y(&self) -> usize {
+        self.y
+    }
+
+    fn set_y(&mut self, y: usize) {
+        self.y = y;
+    }
+}
