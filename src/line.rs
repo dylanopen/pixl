@@ -1,8 +1,6 @@
 //! `LineNode` struct - represents a node for a rectangle shape in a
 //! texture.
 
-use anyhow::Error;
-
 use crate::{Color, Texture, component::DrawComponent};
 
 /// A node representing a line shape in a texture.

@@ -87,8 +87,8 @@ impl Texture {
         if y >= self.height {
             return Err(Error::msg("Pixl: set_pixel: y was out of bounds for texture height"));
         }
-        self.pixels[y.checked_mul(self.width).ok_or(Error::msg("Pixl: set_pixel: arithmetic error"))?
-            .checked_add(x).ok_or(Error::msg("Pixl: set_pixel: arithmetic error"))?]
+        self.pixels[y.checked_mul(self.width).ok_or_else(|| Error::msg("Pixl: set_pixel: arithmetic error"))?
+            .checked_add(x).ok_or_else(||Error::msg("Pixl: set_pixel: arithmetic error"))?]
             = color;
         Ok(())
     }
