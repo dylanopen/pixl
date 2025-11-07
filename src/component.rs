@@ -1,7 +1,10 @@
-//! The fundamental object in Pixl is the 'node'. A node is any object in the
-//! program, usually one which can be drawn to a texture, and are made up of
-//! properties such as position, size, color, etc. Nodes can be simple shapes
-//! like rectangles and circles, or more complex objects like images and text.
+//! Traits to define functionality of Pixel's objects (nodes). Functionality is
+//! added using components.
+//!
+//! Each node in Pixl is defined by its *components*. A component allows
+//! functions to handle logic of your node independently of the inner workings
+//! of the node. For example, a function `move_left` could take any node which
+//! implemented the `PositionComponent` trait.
 //! This module defines traits that provide a common interface for all nodes in
 //! Pixl. By implementing these traits, different types of nodes can be treated
 //! generically, so code can be made much more reusable and modular.
@@ -10,7 +13,7 @@
 //! than is provided here.
 
 
-#![expect(clippy::module_name_repetitions, reason = "nodes should be explicitly defined as Node to avoid name conflicts")]
+#![expect(clippy::module_name_repetitions, reason = "components should be explicitly defined as Components to avoid name conflicts")]
 
 use crate::{Color, Texture};
 
