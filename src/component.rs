@@ -88,7 +88,7 @@ pub trait PositionComponent {
 /// This trait provides functions for getting and setting the size of a node.
 /// This should be implemented by any node that has a size that can be defined
 /// by a rectangle dimensions (width and height).
-pub trait NodeSize {
+pub trait SizeComponent {
 
     /// Get the width of the node.
     /// # Returns
