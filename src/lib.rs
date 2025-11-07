@@ -648,7 +648,6 @@
     clippy::missing_const_for_fn,
     clippy::missing_errors_doc,
     clippy::missing_fields_in_debug,
-    clippy::missing_trait_methods,
     clippy::mixed_read_write_in_expression,
     clippy::mod_module_files,
     clippy::module_name_repetitions,
@@ -820,6 +819,7 @@
     clippy::integer_division,
     clippy::multiple_crate_versions,
     clippy::pub_use,
+    clippy::missing_trait_methods,
     reason = "these lints do not fit with the Pixl project"
 )]
 
@@ -828,6 +828,7 @@ pub mod window;
 pub mod texture;
 pub mod color;
 pub mod component;
+pub mod pixel;
 
 
 pub use window::Window;
