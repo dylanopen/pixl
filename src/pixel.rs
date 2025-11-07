@@ -53,3 +53,14 @@ impl PositionComponent for PixelNode {
         self.y = y;
     }
 }
+
+impl FillColorComponent for PixelNode {
+    fn get_fill_color(&self) -> &Color {
+        &self.color
+    }
+
+    fn set_fill_color(&mut self, color: Color) {
+        self.color = color;
+    }
+}
+
