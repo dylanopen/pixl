@@ -1,5 +1,6 @@
 //! A module defining a 2D texture structure with pixel manipulation
 //! capabilities.
+//!
 //! This struct is the basis for all of Pixl - everything is drawn to a Texture,
 //! and a window simply displays a Texture.
 

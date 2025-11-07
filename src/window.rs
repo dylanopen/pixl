@@ -1,12 +1,13 @@
 //! Contains the `Window` struct and its associated methods for creating and
 //! managing an operating system window that can display a `Texture`.
+//!
 //! It currently uses the `minifb` crate for window management and rendering.
 
 use crate::texture::Texture;
 
 /// The `Window` struct represents an operating system window which can display
 /// a single `Texture`.
-/// /// It uses the `minifb` crate for window management and rendering.
+/// It uses the `minifb` crate for window management and rendering.
 /// # Example
 /// ```rust
 /// use pixl::{window::Window, texture::Texture, color::Color};
