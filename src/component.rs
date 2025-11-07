@@ -172,7 +172,7 @@ pub trait StrokeColorComponent {
 /// for nodes without a fill color, this may be the thickness of the node (e.g.
 /// thickness of a line).
 /// This should be implemented by any node that has a stroke width.
-pub trait NodeStrokeWidth {
+pub trait StrokeWidthComponent {
 
     /// Get the stroke (border/outline) width of the node.
     /// # Returns
