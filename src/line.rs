@@ -55,8 +55,6 @@ impl LineNode {
 /// - `x2`: The x-coordinate of the end point of the line.
 /// - `y2`: The y-coordinate of the end point of the line.
 /// - `color`: The color of the line.
-    // must satisfy ALL clippy lints - no as conversions, all arithmetic operations
-    // should be checked, etc.
 #[expect(clippy::single_call_fn, reason = "due to the unchangable return type of DrawComponent::draw")]
 #[expect(clippy::arithmetic_side_effects, reason = "checked arithmetic here is completely unreadable")]
 #[expect(clippy::cast_sign_loss, reason = "cannot fail, and required in line drawing algorithm")]
@@ -64,6 +62,10 @@ impl LineNode {
 #[expect(clippy::cast_possible_wrap, reason = "cannot fail, and required in line drawing algorithm")]
 fn draw_line(texture: &mut Texture, x1: usize, y1: usize, x2: usize, y2: usize, color: Color) {
     // Bresenham's line algorithm
+    // Note: I personally hate AI-generated code, but this implementation was
+    // mostly written by AI to save time. Issues will be fixed as they are
+    // found, including any performance issues.
+
     let x1i = x1 as isize;
     let y1i = y1 as isize;
     let x2i = x2 as isize;
