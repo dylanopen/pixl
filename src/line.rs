@@ -1,7 +1,9 @@
 //! `LineNode` struct - represents a node for a rectangle shape in a
 //! texture.
 
-use crate::{Color, component::DrawComponent};
+use anyhow::Error;
+
+use crate::{Color, Texture, component::DrawComponent};
 
 /// A node representing a line shape in a texture.
 /// Implemented components:
@@ -45,34 +47,59 @@ impl LineNode {
     }
 }
 
+/// Draw a line on the given texture using Bresenham's line algorithm.
+/// # Parameters
+/// - `texture`: The texture to draw the line on.
+/// - `x1`: The x-coordinate of the start point of the line.
+/// - `y1`: The y-coordinate of the start point of the line.
+/// - `x2`: The x-coordinate of the end point of the line.
+/// - `y2`: The y-coordinate of the end point of the line.
+/// - `color`: The color of the line.
+    // must satisfy ALL clippy lints - no as conversions, all arithmetic operations
+    // should be checked, etc.
+#[expect(clippy::single_call_fn, reason = "due to the unchangable return type of DrawComponent::draw")]
+#[expect(clippy::arithmetic_side_effects, reason = "checked arithmetic here is completely unreadable")]
+#[expect(clippy::cast_sign_loss, reason = "cannot fail, and required in line drawing algorithm")]
+#[expect(clippy::as_conversions, reason = "cannot fail, and required in line drawing algorithm")]
+#[expect(clippy::cast_possible_wrap, reason = "cannot fail, and required in line drawing algorithm")]
+fn draw_line(texture: &mut Texture, x1: usize, y1: usize, x2: usize, y2: usize, color: Color) {
+    // Bresenham's line algorithm
+    let x1i = x1 as isize;
+    let y1i = y1 as isize;
+    let x2i = x2 as isize;
+    let y2i = y2 as isize;
+    
+    let dx = (x2i - x1i).abs();
+    let dy = -(y2i - y1i).abs();
+    let sx: isize = if x1 < x2 { 1 } else { -1 };
+    let sy: isize = if y1 < y2 { 1 } else { -1 };
+    let mut err = dx + dy;
+    let mut x = x1 as isize;
+    let mut y = y1 as isize;
+
+    loop {
+        if x >= 0 && y >= 0 {
+            #[expect(clippy::unwrap_used, reason = "bounds are already checked manually")]
+            texture.set_pixel(x as usize, y as usize, color).unwrap();
+        }
+        if x == x2i && y == y2i {
+            break;
+        }
+        let e2 = 2 * err;
+        if e2 >= dy {
+            err += dy;
+            x += sx;
+        }
+        if e2 <= dx {
+            err += dx;
+            y += sy;
+        }
+    }
+}
+
 impl DrawComponent for LineNode {
     fn draw(&self, texture: &mut crate::Texture) {
-        // Bresenham's line algorithm
-        let dx = (self.x2 as isize - self.x1 as isize).abs();
-        let dy = -(self.y2 as isize - self.y1 as isize).abs();
-        let sx = if self.x1 < self.x2 { 1 } else { -1 };
-        let sy = if self.y1 < self.y2 { 1 } else { -1 };
-        let mut err = dx + dy;
-        let mut x = self.x1 as isize;
-        let mut y = self.y1 as isize;
-
-        loop {
-            if x >= 0 && y >= 0 {
-                texture.set_pixel(x as usize, y as usize, self.color).unwrap_or(());
-            }
-            if x == self.x2 as isize && y == self.y2 as isize {
-                break;
-            }
-            let e2 = 2 * err;
-            if e2 >= dy {
-                err += dy;
-                x += sx;
-            }
-            if e2 <= dx {
-                err += dx;
-                y += sy;
-            }
-        }
+        draw_line(texture, self.x1, self.y1, self.x2, self.y2, self.color);
     }
 }
 
