@@ -1,6 +1,6 @@
 //! `PixelNode` struct - represents a node for a single pixel of a `Texture`.
 
-use crate::{Color, component::{PositionComponent, SizeComponent}};
+use crate::{Color, component::{FillColorComponent, PositionComponent, SizeComponent}};
 
 
 /// A node representing a rectangle shape to be drawn on a texture.
@@ -63,4 +63,13 @@ impl SizeComponent for RectangleNode {
     }
 }
 
+impl FillColorComponent for RectangleNode {
+    fn get_fill_color(&self) -> &Color {
+        &self.fill_color
+    }
+
+    fn set_fill_color(&mut self, color: Color) {
+        self.fill_color = color;
+    }
+}
 
