@@ -1,7 +1,7 @@
 //! `LineNode` struct - represents a node for a rectangle shape in a
 //! texture.
 
-use crate::Color;
+use crate::{Color, component::DrawComponent};
 
 /// A node representing a line shape in a texture.
 /// Implemented components:
@@ -27,4 +27,21 @@ pub struct LineNode {
     pub color: Color,
 }
 
+impl LineNode {
+    /// Create a new `LineNode` with the specified start and end points and color.
+    /// # Parameters
+    /// - `x1`: The x-coordinate of the start point of the line.
+    /// - `y1`: The y-coordinate of the start point of the line.
+    /// - `x2`: The x-coordinate of the end point of the line.
+    /// - `y2`: The y-coordinate of the end point of the line.
+    /// - `color`: The stroke color of the line.
+    /// # Returns
+    /// A new `LineNode` instance with the specified properties.
+    #[must_use]
+    pub const fn new(
+        x1: usize, y1: usize, x2: usize, y2: usize, color: Color
+    ) -> LineNode {
+        LineNode { x1, y1, x2, y2, color }
+    }
+}
 
