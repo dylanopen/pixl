@@ -831,6 +831,7 @@ pub mod component;
 pub mod pixel;
 pub mod rectangle;
 pub mod line;
+pub mod circle;
 
 
 pub use window::Window;
