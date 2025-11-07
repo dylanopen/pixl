@@ -1,9 +1,16 @@
-//! `PixelNode` struct - represents a node for a single pixel of a `Texture`.
+//! `RectangleNode` struct - represents a node for a rectangle shape in a
+//! texture.
 
 use crate::{Color, component::{DrawComponent, FillColorComponent, PositionComponent, SizeComponent}};
 
 
 /// A node representing a rectangle shape to be drawn on a texture.
+/// The rectangle has flat sides, parallel to the texture edges.
+/// ## Implemented components:
+/// - `DrawComponent`
+/// - `PositionComponent`
+/// - `SizeComponent`
+/// - `FillColorComponent`
 #[non_exhaustive]
 #[expect(clippy::module_name_repetitions, reason = "struct should be called 'RectangleNode' as it is standard.")]
 pub struct RectangleNode {
