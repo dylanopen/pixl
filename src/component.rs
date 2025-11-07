@@ -154,7 +154,7 @@ pub trait FillColorComponent {
 /// This trait provides functions for getting and setting the stroke color of
 /// a node.
 /// This should be implemented by any node that has a stroke color.
-pub trait NodeStrokeColor {
+pub trait StrokeColorComponent {
 
     /// Get the stroke (border/outline) color of the node.
     /// # Returns
