@@ -562,7 +562,6 @@
     clippy::exhaustive_enums,
     clippy::exhaustive_structs,
     clippy::exit,
-    clippy::expect_used,
     clippy::expl_impl_clone_on_copy,
     clippy::explicit_deref_methods,
     clippy::explicit_into_iter_loop,
@@ -820,6 +819,7 @@
     clippy::multiple_crate_versions,
     clippy::pub_use,
     clippy::missing_trait_methods,
+    clippy::expect_used,
     reason = "these lints do not fit with the Pixl project"
 )]
 
@@ -831,6 +831,7 @@ pub mod component;
 pub mod pixel;
 pub mod rectangle;
 pub mod line;
+pub mod circle;
 
 
 pub use window::Window;
