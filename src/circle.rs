@@ -1,7 +1,7 @@
 //! The `CircleNode` struct, storing components to represent a filled circle on
 //! a texture.
 
-use crate::{Color, component::DrawComponent};
+use crate::{Color, component::{DrawComponent, FillColorComponent}};
 
 /// A node representing a circle shape to be drawn on a texture.
 /// It has a position (top left), size (width and height, must be equal and must
@@ -80,6 +80,16 @@ impl DrawComponent for CircleNode {
                 }
             }
         }
+    }
+}
+
+impl FillColorComponent for CircleNode {
+    fn get_fill_color(&self) -> &Color {
+        &self.fill_color
+    }
+
+    fn set_fill_color(&mut self, color: Color) {
+        self.fill_color = color;
     }
 }
 
