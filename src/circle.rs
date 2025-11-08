@@ -51,6 +51,11 @@ impl CircleNode {
 impl DrawComponent for CircleNode {
     #[expect(clippy::similar_names, reason = "no clippy, x and y are not similar.")]
     fn draw(&self, texture: &mut crate::Texture) {
+        // This code is likely incredibly suboptimal. I chose to go with a
+        // mathematical representation of a circle here, similarly to how a
+        // raytracer would work, instead of a triangle-based rasterisation
+        // approach, but there are likely many things that could be improved
+        // here: both performance-wise and related to code readability.
         let start_x = self.x.saturating_sub(self.radius);
         let start_y = self.y.saturating_sub(self.radius);
         let end_x = self.x.saturating_add(self.radius);
