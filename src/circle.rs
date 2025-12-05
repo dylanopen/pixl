@@ -49,34 +49,30 @@ impl CircleNode {
 
 
 impl DrawComponent for CircleNode {
-    #[expect(clippy::similar_names, reason = "no clippy, x and y are not similar.")]
     fn draw(&self, texture: &mut crate::Texture) {
         // This code is likely incredibly suboptimal. I chose to go with a
         // mathematical representation of a circle here, similarly to how a
         // raytracer would work, instead of a triangle-based rasterisation
         // approach, but there are likely many things that could be improved
         // here: both performance-wise and related to code readability.
-        let start_x = self.x.saturating_sub(self.radius);
-        let start_y = self.y.saturating_sub(self.radius);
-        let end_x = self.x.saturating_add(self.radius);
-        let end_y = self.y.saturating_add(self.radius);
-        let radius_squared = self.radius
-            .checked_pow(2).expect("overflow: radius ^ 2")
-            .try_into().expect("overflow: converting radius from usize to isize");
-        let xi: isize = self.x.try_into().expect("overflow: circle's X is too large");
-        let yi: isize = self.x.try_into().expect("overflow: circle's X is too large");
-        for py in start_y..=end_y {
-            let pyi: isize = py.try_into().expect("overflow: looping py was too large in circle");
-            let circle_equation_y_part = pyi
-                .checked_sub(yi).expect("overflow: pyi*yi")
-                .checked_pow(2).expect("overflow: pyi*yi ^ 2");
-            for px in start_x..=end_x {
-                let pxi: isize = px.try_into().expect("overflow: looping px was too large in circle");
-                let circle_equation_x_part = pxi.checked_sub(xi).expect("overflow: pxi*xi")
-                .checked_pow(2).expect("overflow: pxi*xi ^ 2");
-                #[expect(clippy::arithmetic_side_effects, reason = "unreadable otherwise")]
-                if circle_equation_x_part + circle_equation_y_part <= radius_squared {
-                    texture.set_pixel(px, py, self.fill_color).unwrap_or(());
+
+        let radius = self.radius.try_into().unwrap_or(isize::MAX);
+        let radius_squared = radius.saturating_pow(2);
+        let center_x: isize = self.x.try_into().unwrap_or(isize::MAX);
+        let center_y: isize = self.y.try_into().unwrap_or(isize::MAX);
+        let left_x = center_x.saturating_sub(radius);
+        let top_y = center_y.saturating_sub(radius);
+        let right_x = center_x.saturating_add(radius);
+        let bottom_y = center_y.saturating_add(radius);
+        for y in top_y..=bottom_y {
+            for x in left_x..=right_x {
+                let dx = x.checked_sub(center_x).expect("pixl: under/overflow in circle drawing");
+                let dy = y.checked_sub(center_y).expect("pixl: under/overflow in circle drawing");
+                #[expect(clippy::arithmetic_side_effects, reason = "else unreadable")]
+                if dx * dx + dy * dy <= radius_squared {
+                    #[expect(clippy::as_conversions, clippy::cast_sign_loss, reason = "bounds are checked above")]
+                    texture.set_pixel(x as usize, y as usize, self.fill_color)
+                        .expect("pixl: failed to set pixel in circle drawing");
                 }
             }
         }
