@@ -6,7 +6,7 @@ license = "MIT"
 description = "The lightweight, powerful Rust game engine and rasterizer built from scratch"
 repository = "https://github.com/dylanopen/pixl"
 documentation = "https://docs.rs/pixl"
-categories = ["Game engines", "Graphics", "GUI", "Mathematics", "Rendering"]
+categories = ["game-engines", "graphics", "gui", "mathematics", "rendering"]
 keywords = ["game", "pixel", "framebuffer", "rasterization", "rasterizer"]
 
 [dependencies]
