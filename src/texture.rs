@@ -6,7 +6,7 @@
 
 use anyhow::Error;
 
-use crate::color::Color;
+use crate::{color::Color, component::DrawComponent};
 
 /// A 2D texture represented as a grid of pixels, where each pixel is defined by
 /// a `Color`.
@@ -181,6 +181,26 @@ impl Texture {
     #[must_use]
     pub const fn get_height(&self) -> usize {
         self.height
+    }
+
+    /// Blits (draws) a node with a `DrawComponent` *on top of* this texture.
+    /// Note that these two lines are identical in effect:
+    /// ```rust
+    /// texture.add(node);
+    /// node.draw(&mut texture);
+    /// ```
+    /// # Arguments
+    /// * `node` - A node implementing the `DrawComponent` trait to be drawn
+    ///   onto this texture.
+    /// # Example
+    /// ```rust
+    /// let mut texture = Texture::new(80, 60);
+    /// let circle_node = CircleNode::new(40, 30, 20, Color::BLUE);
+    /// texture.add(&circle_node);
+    /// ```
+    pub fn add<N>(&mut self, node: &N)
+    where N: DrawComponent{
+        node.draw(self);
     }
 }
 
