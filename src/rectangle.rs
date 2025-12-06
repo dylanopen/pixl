@@ -103,8 +103,8 @@ impl DrawComponent for RectangleNode {
     fn draw(&self, texture: &mut crate::Texture) {
         for dy in 0..cast::usize(self.height).unwrap() {
             for dx in 0..cast::usize(self.width).unwrap() {
-                let px = self.x as usize + dx;
-                let py = self.y as usize + dy;
+                let px = cast::usize(self.x).unwrap().saturating_add(dx);
+                let py = cast::usize(self.y).unwrap().saturating_add(dy);
                 texture.set_pixel(px, py, self.fill_color)
                     .unwrap_or(());
             }
