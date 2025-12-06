@@ -571,7 +571,6 @@
     clippy::filetype_is_file,
     clippy::filter_map_next,
     clippy::flat_map_option,
-    clippy::float_arithmetic,
     clippy::float_cmp,
     clippy::float_cmp_const,
     clippy::fn_params_excessive_bools,
@@ -665,8 +664,7 @@
     clippy::needless_pass_by_ref_mut,
     clippy::needless_pass_by_value,
     clippy::needless_raw_string_hashes,
-    clippy::needless_raw_strings,
-    clippy::negative_feature_names,
+    clippy::needless_raw_strings, clippy::negative_feature_names,
     clippy::no_effect_underscore_binding,
     clippy::no_mangle_with_rust_abi,
     clippy::non_ascii_literal,
@@ -790,7 +788,6 @@
     clippy::unused_self,
     clippy::unused_trait_names,
     clippy::unwrap_in_result,
-    clippy::unwrap_used,
     clippy::use_debug,
     clippy::used_underscore_binding,
     clippy::used_underscore_items,
@@ -820,6 +817,8 @@
     clippy::pub_use,
     clippy::missing_trait_methods,
     clippy::expect_used,
+    clippy::unwrap_used,
+    clippy::float_arithmetic,
     reason = "these lints do not fit with the Pixl project"
 )]
 

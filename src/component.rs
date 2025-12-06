@@ -93,22 +93,22 @@ pub trait SizeComponent {
     /// Get the width of the node.
     /// # Returns
     /// * `usize` - The width of the node.
-    fn get_width(&self) -> usize;
+    fn get_width(&self) -> f64;
 
     /// Get the height of the node.
     /// # Returns
     /// * `usize` - The height of the node.
-    fn get_height(&self) -> usize;
+    fn get_height(&self) -> f64;
 
     /// Set the width of the node.
     /// # Arguments
     /// * `width: usize` - The new width of the node.
-    fn set_width(&mut self, width: usize);
+    fn set_width(&mut self, width: f64);
 
     /// Set the height of the node.
     /// # Arguments
     /// * `height: usize` - The new height of the node.
-    fn set_height(&mut self, height: usize);
+    fn set_height(&mut self, height: f64);
 
     /// Set the size of the node.
     /// This method does not need to be implemented manually by a struct
@@ -117,7 +117,7 @@ pub trait SizeComponent {
     /// # Arguments
     /// * `size` - A (usize, usize) tuple containing the width and height of the
     ///   new size, in the form (width, height).
-    fn set_size(&mut self, size: (usize, usize)) {
+    fn set_size(&mut self, size: (f64, f64)) {
         self.set_width(size.0);
         self.set_height(size.1);
     }
@@ -130,7 +130,7 @@ pub trait SizeComponent {
     /// # Returns
     /// * `(usize, usize)` - A tuple containing the width and height of the
     ///   node, in the form (width, height).
-    fn get_size(&self) -> (usize, usize) {
+    fn get_size(&self) -> (f64, f64) {
         (self.get_width(), self.get_height())
     }
 }
