@@ -56,13 +56,13 @@ impl DrawComponent for CircleNode {
         // approach, but there are likely many things that could be improved
         // here: both performance-wise and related to code readability.
 
-        let radius_squared = self.radius.powi(2) as isize;
-        let center_x = self.x as isize;
-        let center_y = self.y as isize;
-        let left_x = (self.x - self.radius) as isize;
-        let right_x = (self.x + self.radius) as isize;
-        let top_y = (self.y - self.radius) as isize;
-        let bottom_y = (self.y + self.radius) as isize;
+        let radius_squared = cast::isize(self.radius.powi(2)).unwrap_or(isize::MAX);
+        let center_x = cast::isize(self.x).unwrap_or(isize::MAX);
+        let center_y = cast::isize(self.y).unwrap_or(isize::MAX);
+        let left_x = cast::isize(self.x - self.radius).unwrap();
+        let right_x = cast::isize(self.x + self.radius).unwrap();
+        let top_y = cast::isize(self.y - self.radius).unwrap();
+        let bottom_y = cast::isize(self.y + self.radius).unwrap();
         for y in top_y..=bottom_y {
             for x in left_x..=right_x {
                 let dx = x.checked_sub(center_x).expect("pixl: under/overflow in circle drawing");
