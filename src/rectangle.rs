@@ -17,11 +17,11 @@ pub struct RectangleNode {
 
     /// The x-coordinate of the top-left corner of the rectangle.
     /// Assumes (0,0) is the top-left corner of the texture.
-    pub x: usize,
+    pub x: f64,
 
     /// The y-coordinate of the top-left corner of the rectangle.
     /// Assumes (0,0) is the top-left corner of the texture.
-    pub y: usize,
+    pub y: f64,
 
     /// The width of the rectangle.
     pub width: usize,
@@ -47,26 +47,26 @@ impl RectangleNode {
     /// A new `RectangleNode` instance with the specified properties.
     #[must_use]
     pub const fn new(
-        x: usize, y: usize, width: usize, height: usize, fill_color: Color
+        x: f64, y: f64, width: usize, height: usize, fill_color: Color
     ) -> RectangleNode {
         RectangleNode { x, y, width, height, fill_color }
     }
 }
 
 impl PositionComponent for RectangleNode {
-    fn get_x(&self) -> usize {
+    fn get_x(&self) -> f64 {
         self.x
     }
 
-    fn get_y(&self) -> usize {
+    fn get_y(&self) -> f64 {
         self.y
     }
 
-    fn set_x(&mut self, x: usize) {
+    fn set_x(&mut self, x: f64) {
         self.x = x;
     }
 
-    fn set_y(&mut self, y: usize) {
+    fn set_y(&mut self, y: f64) {
         self.y = y;
     }
 }
@@ -103,8 +103,8 @@ impl DrawComponent for RectangleNode {
     fn draw(&self, texture: &mut crate::Texture) {
         for dy in 0..self.height {
             for dx in 0..self.width {
-                let px = self.x.saturating_add(dx);
-                let py = self.y.saturating_add(dy);
+                let px = self.x as usize + dx;
+                let py = self.y as usize + dy;
                 texture.set_pixel(px, py, self.fill_color)
                     .unwrap_or(());
             }

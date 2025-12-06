@@ -17,14 +17,14 @@ pub struct CircleNode {
 
     /// The X coordinate of the **center** of the circle.
     /// This is not the same value as is returned by the `get_x` method.
-    pub x: usize,
+    pub x: f64,
 
     /// The Y coordinate of the **center** of the circle.
     /// This is not the same value as is returned by the `get_y` method.
-    pub y: usize,
+    pub y: f64,
 
     /// The radius of the circle (distance from the edge to the center).
-    pub radius: usize,
+    pub radius: f64,
 
     /// The color of the circle. It will be filled.
     pub fill_color: Color,
@@ -42,7 +42,7 @@ impl CircleNode {
     /// # Returns
     /// A `CircleNode` with the specified properties.
     #[must_use]
-    pub const fn new(x: usize, y: usize, radius: usize, fill_color: Color) -> CircleNode {
+    pub const fn new(x: f64, y: f64, radius: f64, fill_color: Color) -> CircleNode {
         CircleNode { x, y, radius, fill_color }
     }
 }
@@ -56,14 +56,13 @@ impl DrawComponent for CircleNode {
         // approach, but there are likely many things that could be improved
         // here: both performance-wise and related to code readability.
 
-        let radius = self.radius.try_into().unwrap_or(isize::MAX);
-        let radius_squared = radius.saturating_pow(2);
-        let center_x: isize = self.x.try_into().unwrap_or(isize::MAX);
-        let center_y: isize = self.y.try_into().unwrap_or(isize::MAX);
-        let left_x = center_x.saturating_sub(radius);
-        let top_y = center_y.saturating_sub(radius);
-        let right_x = center_x.saturating_add(radius);
-        let bottom_y = center_y.saturating_add(radius);
+        let radius_squared = self.radius.powi(2) as isize;
+        let center_x = self.x as isize;
+        let center_y = self.y as isize;
+        let left_x = (self.x - self.radius) as isize;
+        let right_x = (self.x + self.radius) as isize;
+        let top_y = (self.y - self.radius) as isize;
+        let bottom_y = (self.y + self.radius) as isize;
         for y in top_y..=bottom_y {
             for x in left_x..=right_x {
                 let dx = x.checked_sub(center_x).expect("pixl: under/overflow in circle drawing");
@@ -90,20 +89,20 @@ impl FillColorComponent for CircleNode {
 }
 
 impl PositionComponent for CircleNode {
-    fn get_x(&self) -> usize {
-        self.x.saturating_sub(self.radius)
+    fn get_x(&self) -> f64 {
+        self.x - self.radius
     }
 
-    fn get_y(&self) -> usize {
-        self.y.saturating_sub(self.radius)
+    fn get_y(&self) -> f64 {
+        self.y - self.radius
     }
 
-    fn set_x(&mut self, x: usize) {
-        self.x = x.saturating_add(self.radius);
+    fn set_x(&mut self, x: f64) {
+        self.x = x + self.radius;
     }
 
-    fn set_y(&mut self, y: usize) {
-        self.y = y.saturating_add(self.radius);
+    fn set_y(&mut self, y: f64) {
+        self.y = y + self.radius;
     }
 }
 
