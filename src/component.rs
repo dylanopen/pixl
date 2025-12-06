@@ -39,35 +39,35 @@ pub trait PositionComponent {
     /// the node's position.
     /// # Returns
     /// * `usize` - The X coordinate of the top-left corner of the node.
-    fn get_x(&self) -> usize;
+    fn get_x(&self) -> f64;
 
     /// Get the Y position of the node.
     /// This function should return the Y coordinate of the top-left corner of
     /// the node's position.
     /// # Returns
     /// * `usize` - The Y coordinate of the top-left corner of the node.
-    fn get_y(&self) -> usize;
+    fn get_y(&self) -> f64;
 
     /// Set the X position of the node.
     /// The position is the top-left corner of the node, so the passed `x` value
     /// should be the X coordinate of the top-left corner.
     /// # Arguments
     /// * `x` - The new X coordinate of the top-left corner of the node
-    fn set_x(&mut self, x: usize);
+    fn set_x(&mut self, x: f64);
 
     /// Set the Y position of the node.
     /// The position is the top-left corner of the node, so the passed `y` value
     /// should be the Y coordinate of the top-left corner.
     /// # Arguments
     /// * `y` - The new Y coordinate of the top-left corner of the node
-    fn set_y(&mut self, y: usize);
+    fn set_y(&mut self, y: f64);
 
     /// Set the position of the node to the given `(x, y)` tuple.
     /// The position is the top-left corner of the node.
     /// # Arguments
     /// * `position` - A tuple containing the X and Y coordinates of the new
     ///   position, in the form (x, y).
-    fn set_position(&mut self, position: (usize, usize)) {
+    fn set_position(&mut self, position: (f64, f64)) {
         self.set_x(position.0);
         self.set_y(position.1);
     }
@@ -80,7 +80,7 @@ pub trait PositionComponent {
     /// # Returns
     /// * `(usize, usize)` - A tuple containing the X and Y coordinates of the
     ///   top-left corner of the node, in the form (x, y).
-    fn get_position(&self) -> (usize, usize) {
+    fn get_position(&self) -> (f64, f64) {
         (self.get_x(), self.get_y())
     }
 }
@@ -93,22 +93,22 @@ pub trait SizeComponent {
     /// Get the width of the node.
     /// # Returns
     /// * `usize` - The width of the node.
-    fn get_width(&self) -> usize;
+    fn get_width(&self) -> f64;
 
     /// Get the height of the node.
     /// # Returns
     /// * `usize` - The height of the node.
-    fn get_height(&self) -> usize;
+    fn get_height(&self) -> f64;
 
     /// Set the width of the node.
     /// # Arguments
     /// * `width: usize` - The new width of the node.
-    fn set_width(&mut self, width: usize);
+    fn set_width(&mut self, width: f64);
 
     /// Set the height of the node.
     /// # Arguments
     /// * `height: usize` - The new height of the node.
-    fn set_height(&mut self, height: usize);
+    fn set_height(&mut self, height: f64);
 
     /// Set the size of the node.
     /// This method does not need to be implemented manually by a struct
@@ -117,7 +117,7 @@ pub trait SizeComponent {
     /// # Arguments
     /// * `size` - A (usize, usize) tuple containing the width and height of the
     ///   new size, in the form (width, height).
-    fn set_size(&mut self, size: (usize, usize)) {
+    fn set_size(&mut self, size: (f64, f64)) {
         self.set_width(size.0);
         self.set_height(size.1);
     }
@@ -130,7 +130,7 @@ pub trait SizeComponent {
     /// # Returns
     /// * `(usize, usize)` - A tuple containing the width and height of the
     ///   node, in the form (width, height).
-    fn get_size(&self) -> (usize, usize) {
+    fn get_size(&self) -> (f64, f64) {
         (self.get_width(), self.get_height())
     }
 }

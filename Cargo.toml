@@ -1,6 +1,6 @@
 [package]
 name = "pixl"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2024"
 license = "MIT"
 description = "The lightweight, powerful Rust game engine and rasterizer built from scratch"
@@ -11,5 +11,6 @@ keywords = ["game", "pixel", "framebuffer", "rasterization", "rasterizer"]
 
 [dependencies]
 anyhow = "1.0.100"
+cast = { version = "0.3.0" }
 minifb = { version = "0.28.0", default-features = false, features = ["x11"] }
 
