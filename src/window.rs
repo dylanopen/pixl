@@ -11,7 +11,7 @@ use crate::texture::Texture;
 /// # Example
 /// ```rust
 /// use pixl::{window::Window, texture::Texture, color::Color};
-/// let mut window = Window::new(800, 600, "Hello, Pixl!".to_string());
+/// let mut window = Window::new(800, 600, "Hello, Pixl!");
 /// let mut texture = Texture::new(80, 60); // doesn't have to match window size
 /// // Set some pixels in the texture:
 /// texture.set_pixel(10, 10, Color::rgb(255, 0, 0)).unwrap(); // red pixel
@@ -73,7 +73,7 @@ impl Window {
     /// # Example
     /// ```rust
     /// use pixl::window::Window;
-    /// let mut window = Window::new(800, 600, "Hello, Pixl!".to_string());
+    /// let mut window = Window::new(800, 600, "Hello, Pixl!");
     /// while window.is_open() {
     ///    // ...
     /// }
