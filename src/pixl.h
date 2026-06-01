@@ -1,0 +1,27 @@
+#ifndef PIXL_H
+#define PIXL_H
+
+#include <stdio.h>
+#include "lib/gl.h"
+#include "lib/result.h"
+#include "lib/glfw3.h"
+#include "lib/result.h"
+
+
+//--- Window management, window.c ---//
+
+typedef struct {
+    GLFWwindow *glfwWindow;
+} PixlWindow;
+
+typedef enum {
+    PIXL_CREATE_WINDOW_ERROR_GLFW_INIT,
+    PIXL_CREATE_WINDOW_ERROR_GLFW_CREATE_WINDOW,
+} PixlCreateWindowError;
+
+RESULT_STRUCT(PixlWindow, PixlCreateWindowError);
+
+RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(int width, int height, char* title);
+
+
+#endif
