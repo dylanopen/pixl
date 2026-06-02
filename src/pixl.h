@@ -2,6 +2,7 @@
 #define PIXL_H
 
 #include "lib/gl.h"
+#include <stdint.h>
 #include <stdio.h>
 #include "lib/result.h"
 #include "lib/glfw3.h"
@@ -22,6 +23,16 @@ typedef enum {
 RESULT_STRUCT(PixlWindow, PixlCreateWindowError);
 
 RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(int width, int height, char* title);
+
+
+//--- Colors, color.c ---/
+
+typedef struct {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
+    uint8_t a;
+} PixlColor;
 
 
 #endif
