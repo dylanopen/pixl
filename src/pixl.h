@@ -22,7 +22,7 @@ typedef enum {
 
 RESULT_STRUCT(PixlWindow, PixlCreateWindowError);
 
-RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(int width, int height, char* title);
+RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(uint32_t width, uint32_t height, char* title);
 
 
 //--- Colors, color.c ---/

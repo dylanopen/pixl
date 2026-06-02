@@ -1,10 +1,11 @@
 #include "pixl.h"
+#include <stdint.h>
 
 void _pixl_glfw_error_callback(int error, const char* description) {
     fprintf(stderr, "Pixl: GLFW error %d: %s\n", error, description);
 }
 
-RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(int width, int height, char* title) {
+RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(uint32_t width, uint32_t height, char* title) {
     if (glfwInit() == 0) {
 	return (RESULT(PixlWindow, PixlCreateWindowError))
 	    RESULT_FAILURE(PIXL_CREATE_WINDOW_ERROR_GLFW_INIT);
