@@ -1,8 +1,8 @@
 #ifndef PIXL_H
 #define PIXL_H
 
-#include <stdio.h>
 #include "lib/gl.h"
+#include <stdio.h>
 #include "lib/result.h"
 #include "lib/glfw3.h"
 #include "lib/result.h"
