@@ -11,7 +11,7 @@ build: clean
 	$(CC) -shared $(C_FLAGS) $(DYNAMIC_LINKS) $(SOURCE_FILES) -o $(BUILD_DIR)/libpixl.so
 
 runtestexample: build
-	$(CC) -g -Wall -Wextra -Werror -o $(BUILD_DIR)/pixltestexample src/testexample.c -L$(BUILD_DIR) -lpixl $(DYNAMIC_LINKS) 
+	$(CC) -g -Wall -Wextra -Werror -o $(BUILD_DIR)/pixltestexample devtest/testexample.c -L$(BUILD_DIR) -lpixl $(DYNAMIC_LINKS) 
 	LD_LIBRARY_PATH=build ./build/pixltestexample
 
 clean:
