@@ -1,9 +1,10 @@
 #ifndef PIXL_H
 #define PIXL_H
 
-#include "lib/gl.h"
 #include <stdint.h>
 #include <stdio.h>
+
+#include "lib/gl.h"
 #include "lib/result.h"
 #include "lib/glfw3.h"
 #include "lib/result.h"
@@ -43,9 +44,24 @@ PixlColor pixl_color_rgb(uint8_t r, uint8_t g, uint8_t b);
 typedef struct {
     GLuint vao;
     GLuint vbo;
-} VertexBuffer;
+} PixlVertexBuffer;
 
-VertexBuffer pixl_create_vertex_buffer_from_raw(int number_of_vertices, int floats_per_vertex, float raw_vertex_data[]);
+PixlVertexBuffer pixl_create_vertex_buffer_from_raw(int number_of_vertices, int floats_per_vertex, float raw_vertex_data[]);
 
+//--- Shader loading, binding and program bundling, shader.c ---//
+
+typedef enum {
+    PixlVertexShaderType,
+    PixlFragmentShaderType,
+} PixlShaderType;
+
+GLuint _pixl_shader_type_to_gl(PixlShaderType type);
+
+typedef struct {
+    const char* source;
+    GLuint gl;
+} PixlShader;
+
+PixlShader pixl_load_shader(const char* source, PixlShaderType type);
 
 #endif
