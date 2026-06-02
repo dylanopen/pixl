@@ -8,3 +8,8 @@ PixlColor pixl_color_rgba(uint8_t r, uint8_t g, uint8_t b, uint8_t a) {
 	.a = a,
     };
 }
+
+PixlColor pixl_color_rgb(uint8_t r, uint8_t g, uint8_t b) {
+    return pixl_color_rgba(r, g, b, 255);
+}
+
