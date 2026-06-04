@@ -7,8 +7,8 @@ void _pixl_glfw_error_callback(int error, const char* description) {
 
 RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(uint32_t width, uint32_t height, char* title) {
     if (glfwInit() == 0) {
-	return (RESULT(PixlWindow, PixlCreateWindowError))
-	    RESULT_FAILURE(PIXL_CREATE_WINDOW_ERROR_GLFW_INIT);
+        return (RESULT(PixlWindow, PixlCreateWindowError))
+            RESULT_FAILURE(PIXL_CREATE_WINDOW_ERROR_GLFW_INIT);
     }
 
     glfwSetErrorCallback(_pixl_glfw_error_callback);
@@ -20,8 +20,8 @@ RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(uint32_t width, uin
 
     GLFWwindow *glfwWindow = glfwCreateWindow(width, height, title, NULL, NULL);
     if (!glfwWindow) {
-	return (RESULT(PixlWindow, PixlCreateWindowError))
-	    RESULT_FAILURE(PIXL_CREATE_WINDOW_ERROR_GLFW_CREATE_WINDOW);
+        return (RESULT(PixlWindow, PixlCreateWindowError))
+            RESULT_FAILURE(PIXL_CREATE_WINDOW_ERROR_GLFW_CREATE_WINDOW);
     }
     glfwMakeContextCurrent(glfwWindow);
     gladLoadGL(glfwGetProcAddress);
@@ -29,6 +29,6 @@ RESULT(PixlWindow, PixlCreateWindowError) pixl_create_window(uint32_t width, uin
     PixlWindow window;
     window.glfwWindow = glfwWindow;
     return (RESULT(PixlWindow, PixlCreateWindowError))
-	RESULT_SUCCESS(window);
+        RESULT_SUCCESS(window);
 }
 

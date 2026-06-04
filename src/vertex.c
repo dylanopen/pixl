@@ -14,8 +14,8 @@ PixlVertexBuffer pixl_create_vertex_buffer_from_raw(int number_of_vertices, int 
     glad_glVertexAttribPointer(0, floats_per_vertex, GL_FLOAT, GL_FALSE, 0, NULL);
 
     return (PixlVertexBuffer) {
-	.vao = vao,
-	.vbo = vbo,
+        .vao = vao,
+        .vbo = vbo,
     };
 }
 
