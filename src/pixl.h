@@ -64,4 +64,12 @@ typedef struct {
 
 PixlShader pixl_load_shader(const char* source, PixlShaderType type);
 
+typedef struct {
+    GLuint gl;
+    int number_of_shaders;
+    PixlShader shaders[];
+} PixlShaderProgram;
+
+PixlShaderProgram pixl_create_shader_program(int number_of_shaders, PixlShader shaders[]);
+
 #endif
